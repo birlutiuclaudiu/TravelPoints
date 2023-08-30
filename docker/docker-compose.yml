@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  db:
+    container_name: db
+    image: postgres:latest
+    restart: always
+    volumes:
+      - app_postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: disi_travel_points
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      TZ: 'UTC'
+      PGTZ: 'UTC'
+    ports:
+      - "5433:5432"
+
+  backend:
+    container_name: backend
+    image: backend
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/disi_travel_points
+      DATABASE_PASSWORD: postgres
+      DATABASE_IP: db
+      DATABASE_PORT: 5432
+      DATABASE_USER: 'postgres'
+      DATABASE_NAME: 'disi_travel_points'
+      TZ: 'UTC'
+      PGTZ: 'UTC'
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+volumes:
+  app_postgres_data:
+    driver: local
+
