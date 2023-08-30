@@ -1,5 +1,5 @@
 # TravelPoints
-Soring Boot REST API  for an TravelPoints is a Java-based web application designed to simplify travel planning and make the most of your trips by allowing users to discover and add touristic objectives to their personalized wishlist.
+Soring Boot REST API for a Java-based web application designed to simplify travel planning and make the most of your trips by allowing users to discover and add touristic objectives to their personalized wishlist.
 
 Team: <br>
 <a href="https://github.com/GavraAnamaria"> Gavra Anamaria  </a> <br>
